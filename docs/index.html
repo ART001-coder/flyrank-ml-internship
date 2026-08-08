@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ranking Refresh Opportunity by Demand, Not Just Risk — FlyRank Capstone</title>
+<style>
+  :root{
+    --ink:#1c2430;
+    --paper:#f7f5f0;
+    --rule:#d8d3c6;
+    --accent:#3a6b5c;
+    --accent-soft:#e3ece8;
+    --muted:#6b7280;
+    --mono: "IBM Plex Mono","SFMono-Regular",Consolas,monospace;
+    --serif: "Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans: "Inter","Helvetica Neue",Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--serif); line-height:1.65; font-size:18px;
+  }
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+  header.hero{
+    border-bottom:1px solid var(--rule);
+    padding:64px 0 40px;
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:13px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:18px;
+  }
+  h1{
+    font-family:var(--serif); font-weight:600; font-size:2.4rem;
+    line-height:1.15; margin:0 0 20px; letter-spacing:-0.01em;
+  }
+  .byline{font-family:var(--sans); font-size:15px; color:var(--muted);}
+  .byline a{color:var(--accent);}
+  .stat-row{
+    display:flex; gap:28px; margin-top:36px; flex-wrap:wrap;
+    font-family:var(--mono);
+  }
+  .stat{border-left:2px solid var(--accent); padding-left:12px;}
+  .stat .num{font-size:1.6rem; font-weight:600; display:block;}
+  .stat .label{font-size:12px; color:var(--muted); text-transform:uppercase; letter-spacing:.04em;}
+
+  section{padding:40px 0; border-bottom:1px solid var(--rule);}
+  section:last-of-type{border-bottom:none;}
+  h2{
+    font-family:var(--mono); font-size:14px; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--accent); margin:0 0 20px;
+  }
+  h2::before{content:"§ "; color:var(--rule);}
+  p{margin:0 0 16px;}
+  .lede{font-size:1.15rem; color:var(--ink);}
+
+  table{width:100%; border-collapse:collapse; margin:20px 0; font-family:var(--sans); font-size:15px;}
+  th,td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--rule);}
+  th{font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); font-weight:500;}
+  td.num, th.num{text-align:right; font-family:var(--mono);}
+  tr.best td{background:var(--accent-soft); font-weight:600;}
+
+  .figure{margin:28px 0;}
+  .figure img{width:100%; border:1px solid var(--rule); background:#fff;}
+  .figure figcaption{font-family:var(--sans); font-size:13px; color:var(--muted); margin-top:8px;}
+
+  .callout{
+    background:var(--accent-soft); border-left:3px solid var(--accent);
+    padding:16px 20px; font-family:var(--sans); font-size:15px; margin:20px 0;
+  }
+  .playbook{list-style:none; padding:0; margin:20px 0; counter-reset:step;}
+  .playbook li{
+    counter-increment:step; padding:16px 0 16px 44px; position:relative;
+    border-bottom:1px solid var(--rule); font-family:var(--sans); font-size:15px;
+  }
+  .playbook li::before{
+    content:counter(step); position:absolute; left:0; top:16px;
+    width:26px; height:26px; border-radius:50%; background:var(--accent);
+    color:#fff; font-family:var(--mono); font-size:13px; display:flex;
+    align-items:center; justify-content:center;
+  }
+  .playbook strong{color:var(--ink);}
+
+  code{font-family:var(--mono); background:var(--accent-soft); padding:2px 5px; border-radius:3px; font-size:.85em;}
+  pre{
+    background:#20261f; color:#e7ede6; padding:16px; overflow-x:auto;
+    font-family:var(--mono); font-size:13px; border-radius:4px;
+  }
+  a{color:var(--accent);}
+  footer{padding:40px 0 64px; font-family:var(--sans); font-size:13px; color:var(--muted);}
+  ul.plain{font-family:var(--sans); font-size:15px; padding-left:20px;}
+  ul.plain li{margin-bottom:8px;}
+
+  @media (max-width:600px){
+    body{font-size:16px;}
+    h1{font-size:1.8rem;}
+    .stat-row{gap:18px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">FlyRank ML Internship — Capstone — Refresh / Content Opportunity Scoring</div>
+  <h1>Ranking Refresh Opportunity by Demand, Not Just Risk</h1>
+  <p class="byline">Abhyudita · IIT Kharagpur · <a href="https://github.com/ART001-coder/flyrank-ml-internship">Repository</a></p>
+  <div class="stat-row">
+    <div class="stat"><span class="num">0.92</span><span class="label">Precision@50, held-out clients</span></div>
+    <div class="stat"><span class="num">30,000</span><span class="label">Pages scored</span></div>
+    <div class="stat"><span class="num">32</span><span class="label">Anonymized clients</span></div>
+    <div class="stat"><span class="num">5×3</span><span class="label">Grouped CV folds × repeats</span></div>
+  </div>
+</header>
+
+<section>
+  <h2>Abstract</h2>
+  <p class="lede">Which pages in a content library are worth an editor's attention this week,
+  and how should that attention be prioritized? Using the bundled 30,000-row anonymized
+  FlyRank slice, I built a gradient-boosted classifier on 90-day search and analytics
+  aggregates plus two engineered peer-relative features — how a page's CTR and engagement
+  compare to similar pages, not just their raw values — validated with repeated
+  client-grouped cross-validation to avoid overfitting to any one client's quirks. The
+  model separates declining from non-declining pages only moderately well on its own
+  (0.69 mean ROC AUC), but the top of its ranked queue is sharp: 0.92 precision in the
+  top 50 pages on clients it never saw in training. The deliverable is a
+  demand-weighted <code>opportunity_score</code> — decline risk multiplied by traffic
+  volume — so editors see the pages where being wrong is expensive first, not just the
+  pages the model is most confident about.</p>
+</section>
+
+<section>
+  <h2>Introduction</h2>
+  <p>A content team can't manually re-review thousands of pages every month. Some pages
+  are quietly losing search visibility; most aren't. The decision this work supports is
+  simple to state and hard to do well: <strong>given limited editor time, which pages get
+  looked at first?</strong> A model that's merely accurate isn't enough — a 90%-confident
+  prediction about a page with 50 monthly impressions matters far less than a 60%-confident
+  one about a page with 200,000. Ranking has to account for both.</p>
+</section>
+
+<section>
+  <h2>Data</h2>
+  <p>This analysis runs on the bundled anonymized starter release —
+  <code>content_refresh_anonymized.csv</code>: 30,000 content pages across 32 pseudonymized
+  clients, 90-day trailing Google Search Console and GA4 aggregates, keyword context, and
+  content properties. No client names, domains, URLs, or credentials appear anywhere in this
+  repository.</p>
+  <p>Deliberately excluded from every feature set: <code>trend_direction</code> and
+  <code>trend_pct</code> (the label source), and the raw <code>*_last_30d</code> /
+  <code>*_prev_30d</code> columns they're computed from — including those would leak the
+  label almost perfectly, since the label <em>is</em> a threshold on their ratio.
+  <code>content_id</code> and <code>client_id</code> are used only for grouping, never as
+  features.</p>
+  <div class="callout">Scope caveat, stated plainly: the full FlyRank warehouse release is
+  ~79M rows on Hugging Face; this capstone uses the 30k-row teaching slice. The methodology
+  here — peer-relative features, repeated grouped CV, demand-weighted scoring — is built to
+  carry over directly to the full release via the DuckDB workflow; that's the natural next
+  validation step.</div>
+</section>
+
+<section>
+  <h2>Methodology</h2>
+  <p><strong>Model:</strong> HistGradientBoosting classifier, compared against logistic
+  regression and random forest on the same features and splits.</p>
+  <p><strong>Features beyond the standard 90-day aggregates:</strong></p>
+  <ul class="plain">
+    <li><strong>Peer-relative z-scores</strong> — each page's CTR, engagement rate, and
+    average position expressed as a z-score against other pages in the same content type
+    and position tier, rather than only the raw value.</li>
+    <li><strong>Visibility opportunity</strong> — <code>log(impressions) × (1 − competition)</code>,
+    an interaction term for pages that are visible but sitting in an easy keyword slot.</li>
+  </ul>
+  <p><strong>Label:</strong> <code>is_declining_label = (trend_direction == "down")</code> —
+  kept identical to the reference definition so results are directly comparable.</p>
+  <p><strong>Validation:</strong> stratified grouped K-fold, grouped by <code>client_id</code>
+  so no client's pages appear in both the train and test side of a fold, repeated 5 folds ×
+  3 shuffles to report a distribution rather than a single lucky (or unlucky) split.</p>
+</section>
+
+<section>
+  <h2>Results</h2>
+  <table>
+    <thead><tr><th>Model</th><th class="num">ROC AUC</th><th class="num">Avg. precision</th><th class="num">Precision@50</th></tr></thead>
+    <tbody>
+      <tr><td>Logistic regression</td><td class="num">0.668 ± 0.040</td><td class="num">0.674 ± 0.046</td><td class="num">0.732 ± 0.141</td></tr>
+      <tr><td>Random forest</td><td class="num">0.689 ± 0.049</td><td class="num">0.707 ± 0.043</td><td class="num">0.864 ± 0.023</td></tr>
+      <tr class="best"><td>HistGradientBoosting</td><td class="num">0.692 ± 0.059</td><td class="num">0.707 ± 0.058</td><td class="num">0.860 ± 0.089</td></tr>
+    </tbody>
+  </table>
+  <p><em>Reference baseline (transparent staleness+volume rule, same repo):</em> 0.627 ROC AUC,
+  0.240 precision@50. Every model here clears that floor by a wide margin, especially at the
+  top of the ranked queue.</p>
+  <p>Single held-out client-group check (comparable in spirit to a standard train/test split):
+  ROC AUC 0.644, <strong>precision@50 = 0.92</strong>.</p>
+
+  <figure class="figure">
+    <img src="paper_assets/model_comparison_cv.png" alt="Bar chart comparing ROC AUC across three models with error bars">
+    <figcaption>Fig. 1 — ROC AUC by model, mean ± std across 15 grouped-CV runs.</figcaption>
+  </figure>
+
+  <figure class="figure">
+    <img src="paper_assets/top_feature_importance.png" alt="Horizontal bar chart of top 10 permutation importances">
+    <figcaption>Fig. 2 — Permutation importance (drop in ROC AUC when a feature is shuffled), held-out fold.</figcaption>
+  </figure>
+</section>
+
+<section>
+  <h2>Limitations & honest framing</h2>
+  <p>The model is a <strong>moderate</strong> separator overall (0.69 AUC) but a
+  <strong>sharp</strong> one at the top of the ranked list — those are different claims and
+  this paper keeps them separate. The precision@50 standard deviation (±0.09–0.14 across
+  repeats) is larger than the AUC standard deviation, meaning which clients land in a test
+  fold shifts the top-tier precision more than it shifts overall separability — treat any
+  single precision@50 figure as a range, not a fixed number. All results here are
+  <strong>observed</strong> on a 90-day historical window and are <strong>decision-support</strong>
+  for editorial review, not a causal claim about what caused any page's decline, and not an
+  automatic publishing trigger.</p>
+</section>
+
+<section>
+  <h2>Ranked recommendations</h2>
+  <ol class="playbook">
+    <li><strong>Top tier (opportunity_score &gt; 8):</strong> high-impression pages with high
+    decline probability. Route to an editor for manual review this week — this is where a
+    wrong call costs the most traffic.</li>
+    <li><strong>Mid tier:</strong> high decline probability, lower demand. Batch into a
+    monthly review cycle rather than an urgent one.</li>
+    <li><strong>Low tier / monitor:</strong> low decline probability regardless of demand.
+    No action — re-score next cycle.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Reproducibility</h2>
+  <pre>git clone https://github.com/ART001-coder/flyrank-ml-internship.git
+cd flyrank-ml-internship
+pip install -r requirements.txt
+python work/scripts/opportunity_score_model.py
+python work/scripts/interpret_and_chart.py</pre>
+  <p>Random seed fixed at 42 throughout. Full write-up, notebooks, and reference-pipeline
+  comparison live in the <a href="https://github.com/ART001-coder/flyrank-ml-internship/blob/main/work/capstone_report.md">capstone report</a>
+  and <a href="https://github.com/ART001-coder/flyrank-ml-internship/tree/main/work">work/</a> folder.</p>
+</section>
+
+<footer>
+  Built on the FlyRank ML Internship dataset — <a href="https://flyrank.ai">flyrank.ai</a>
+</footer>
+
+</div>
+</body>
+</html>
